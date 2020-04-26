@@ -1,0 +1,29 @@
+
+.search-drop-down {
+    position: absolute;
+    color: #444;
+    border: none;
+    background-color: #fff;
+    padding: 5px 16px;
+    margin-left: 8px;
+    width: 100%;
+    max-width: 208px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 4;
+    font-family: sans-serif;
+    opacity: 0.98;
+}
+
+.search-results {
+    padding: 10px;
+}
+
+.search-results:hover {
+    background: #575050;
+    color: rgb(233, 177, 177)
+}
+
+.color-purple {
+    color: #A550BC;
+}

@@ -1,1 +1,23 @@
-<p>header works!</p>
+<header>
+    <nav>
+        <a>
+            <img src="assets/images/ham.svg" (click)="toggleSidebar()" alt="toggle menu" class="menu" id="menu">
+        </a>
+
+        <div class="search-container" (clickedOutside)="closeDropDown()" appClickedOutside>
+            <!-- <input type="search" aria-level="search" placeholder="Search By Name"> -->
+            <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
+                <input type="search" placeholder="Search By Title" formControlName='search' (click)="openDropDown()" (keyup.enter)="onEnter()">
+            </form>
+            <div >
+                <div *ngIf="showDropDown" class='search-drop-down '>
+                    <div (click)='selectValue(s)' class='search-results ' *ngFor="let s of titlesArray | options: getSearchValue()">
+                        <a>
+                               {{s}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>    
+</header>

@@ -1,127 +1,29 @@
 <div class="container">
-    <header>
-        <nav>
-            <a>
-                <img src="assets/images/ham.svg" alt="toggle menu" class="menu" id="menu">
-            </a>
 
-            <div class="search-container">
-                <input type="search" aria-level="search" placeholder="Search By Name">
-            </div>
-        </nav>    
-    </header>
-    <div id="sidenav" class="sidenav">
-        <div class="sidenav-container">
-            
-            <div class="aio-nav-menu">
-                <button type="button" onclick="expandCollapse('plateform')" class="vertical-menu-item heading level-1" area-pressed="false">
-                    <span>Plateform</span>
-                </button>
-                <div id="plateform" class="heading-children level-1 collapsed">
-                    <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>6</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="aio-nav-menu">
-                <button type="button" onclick="expandCollapse('genere')" class="vertical-menu-item heading level-1" area-pressed="false">
-                    <span>Genere</span>
-                </button>
-                <div id="genere" class="heading-children level-1 collapsed">
-                    <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>6</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="aio-nav-menu">
-                <button type="button" onclick="expandCollapse('release_year')" class="vertical-menu-item heading level-1" area-pressed="false">
-                    <span>Release Year</span>
-                </button>
-                <div id="release_year" class="heading-children level-1 collapsed">
-                    <label class="container-checkbox">One
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="container-checkbox">Two
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="container-checkbox">Three
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="container-checkbox">Four
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                      </label>
-                </div>
-            </div>
-
-            <div class="aio-nav-menu">
-                <button type="button" onclick="expandCollapse('editors_choice')" class="vertical-menu-item heading level-1" area-pressed="false">
-                    <span>Editors Choice</span>
-                </button>
-                <div id="editors_choice" class="heading-children level-1 collapsed">
-                    <label class="container-checkbox">One
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="container-checkbox">Two
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="container-checkbox">Three
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="container-checkbox">Four
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                      </label>
-                </div>
-            </div>
-
-            
-            
-        </div>
+    <app-header (clickedHideShow)="toggleSidebar($event)"
+    [getTitlesArray]="titles" (updateTitleSearchText)="updateSearchText($event)">
         
+    </app-header>
+    
+    <div id="sidenav" class="sidenav" [ngClass]="{'sidenav-margin-left':showSidebar}">
+        <app-sidebar [showSidebar]="showSidebar" 
+            [getSortObj]="sortObj" (updateSortObj)="updateSortObjFromSidebar($event)"
+            [getPlatformObj]="platformObj" (updatePlatformObj)="updatePlatformObjFromSidebar($event)"
+            [getGenreObj]="genreObj" (updateGenreObj)="updateGenreObjFromSidebar($event)"
+            [getRelease_yearObj]="release_yearObj" (updateRelease_yearObj)="updateRelease_yearObjFromSidebar($event)"
+            [getEditors_choiceObj]="editors_choiceObj" (updateEditors_choiceObj)="updateEditors_choiceObjFromSidebar($event)">
+        </app-sidebar>
     </div>
-    <div id="content" class="content">
+    <div id="content" class="content" [ngClass]="{'content-margin-left':showSidebar}">
         <div class="game-cards">
-            <div class="game-card">
-                <section>LittleBigPlanet PS Vita -- Marvel Super Hero Edition</section><hr>
-                <div class="game-details">
-                    <p>Platform : PlayStation Vita</p>
-                    <p>Genere : Platformer</p>
-                    <p>Score : 9</p>
-                    <p>Editors Choice : N</p>
-                </div><hr>
-                <p class="card-footer">Release Year: 2012</p>
-            </div>
-            <div class="game-card">2</div>
-            <div class="game-card">3</div>
-            <div class="game-card">4</div>
-            <div class="game-card">5</div>
-            <div class="game-card">6</div>
-            <div class="game-card">7</div>
-            <div class="game-card">8</div>
-            <div class="game-card">9</div>
-            <div class="game-card">10</div>
-            <div class="game-card">11</div>
-            <div class="game-card">12</div>
+            <app-game-card *ngFor="let game of gameList | title:searchText | sort: sortObj | platform: platformObj 
+                | genre: genreObj 
+                | release_year:release_yearObj | editors_choice:editors_choiceObj | paginate: { itemsPerPage: itemsPerPage, currentPage: p }" 
+                [game]="game">
+            </app-game-card>
+            
         </div>
+        <pagination-controls class="pages-center" (pageChange)="p = $event"></pagination-controls>
 
     </div>
 </div>

@@ -1,1 +1,10 @@
-<p>game-card works!</p>
+<div class="game-card">
+    <section>{{game?.title}}</section><hr>
+    <div class="game-details">
+        <p>Platform : {{game?.platform}}</p>
+        <p>Genre : {{game?.genre}}</p>
+        <p>Score : {{game?.score}}</p>
+        <p>Editors Choice : {{game?.editors_choice}}</p>
+    </div><hr>
+    <p class="card-footer">Release Year: {{game?.release_year}}</p>
+</div>

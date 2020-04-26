@@ -1,1 +1,70 @@
-<p>sidebar works!</p>
+<div class="sidenav-container">
+
+    <div class="aio-nav-menu">
+        <button type="button" (click)="toggleCollapse('sort')" class="vertical-menu-item heading level-1" area-pressed="false">
+            <span>Sort By Score</span>
+        </button>
+        <div id="platform" class="heading-children level-1 collapsed" [ngClass]="{'collapsed':!liExpanded?.sort, 'expanded':liExpanded?.sort}">
+            <label *ngFor="let platform of sortObj | keyvalue" class="container-checkbox">{{platform.key}}
+                <input *ngIf="platform.value" type="checkbox" checked="checked" (change)="updateConditionPlatform(platform.key, $event)">
+                <input *ngIf="!platform.value" type="checkbox" (change)="updateConditionSort(platform.key, $event)">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="aio-nav-menu">
+        <button type="button" (click)="toggleCollapse('platform')" class="vertical-menu-item heading level-1" area-pressed="false">
+            <span>Platform</span>
+        </button>
+        <div id="platform" class="heading-children level-1 collapsed" [ngClass]="{'collapsed':!liExpanded?.platform, 'expanded':liExpanded?.platform}">
+            <label *ngFor="let platform of platformObj | keyvalue" class="container-checkbox">{{platform.key}}
+                <input *ngIf="platform.value" type="checkbox" checked="checked" (change)="updateConditionPlatform(platform.key, $event)">
+                <input *ngIf="!platform.value" type="checkbox" (change)="updateConditionPlatform(platform.key, $event)">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="aio-nav-menu">
+        <button type="button" (click)="toggleCollapse('genre')" class="vertical-menu-item heading level-1" area-pressed="false">
+            <span>Genre</span>
+        </button>
+        <div id="genre" class="heading-children level-1 collapsed" [ngClass]="{'collapsed':!liExpanded?.genre, 'expanded':liExpanded?.genre}">
+            <label *ngFor="let platform of genreObj | keyvalue" class="container-checkbox">{{platform.key}}
+                <input *ngIf="platform.value" type="checkbox" checked="checked" (change)="updateConditionGenre(platform.key, $event)">
+                <input *ngIf="!platform.value" type="checkbox" (change)="updateConditionGenre(platform.key, $event)">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="aio-nav-menu">
+        <button type="button" (click)="toggleCollapse('released_year')" class="vertical-menu-item heading level-1" area-pressed="false">
+            <span>Release Year</span>
+        </button>
+        <div id="release_year" class="heading-children level-1 collapsed" [ngClass]="{'collapsed':!liExpanded?.released_year, 'expanded':liExpanded?.released_year}">
+            <label *ngFor="let platform of release_yearObj | keyvalue" class="container-checkbox">{{platform.key}}
+                <input *ngIf="platform.value" type="checkbox" checked="checked" (change)="updateConditionRelease_year(platform.key, $event)">
+                <input *ngIf="!platform.value" type="checkbox" (change)="updateConditionRelease_year(platform.key, $event)">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="aio-nav-menu">
+        <button type="button" (click)="toggleCollapse('editors_choice')" class="vertical-menu-item heading level-1" area-pressed="false">
+            <span>Editors Choice</span>
+        </button>
+        <div id="editors_choice" class="heading-children level-1 collapsed" [ngClass]="{'collapsed':!liExpanded?.editors_choice, 'expanded':liExpanded?.editors_choice}">
+            <label *ngFor="let platform of editors_choiceObj | keyvalue" class="container-checkbox">{{platform.key}}
+                <input *ngIf="platform.value" type="checkbox" checked="checked" (change)="updateConditionEditors_choice(platform.key, $event)">
+                <input *ngIf="!platform.value" type="checkbox" (change)="updateConditionEditors_choice(platform.key, $event)">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+
+    
+    
+</div>
