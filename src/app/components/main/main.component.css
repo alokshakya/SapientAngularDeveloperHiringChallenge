@@ -1,0 +1,371 @@
+.container{
+    width: 80%;
+}
+body{
+    /* this colour has been to remove jerk in color of extended content during transition*/
+    background-color: rgb(255, 244, 244);
+}
+header{
+    position: fixed;
+    top: 0px;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    width: 100%;
+    height: 64px;
+    background-color: royalblue;
+    z-index: 4;
+}
+header nav .menu {
+    width: 35px;
+    margin: 20px 0 10px 20px;
+    cursor: pointer;
+}
+
+header nav {
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 16px 0 0;
+    width: 100%;
+    height: 64px;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    color: #fff;
+}
+
+header nav .search-container {
+    
+    width: 400px;
+    min-width: 140px;
+    height: 100%;
+    margin-right: 16px;
+    padding-top: 35px;
+    padding-left: calc(2%);
+    margin: 20px 20px 10px 25x;
+}
+
+.search-container input {
+    color: #444;
+    border: none;
+    border-radius: 100px;
+    background-color: #fff;
+    padding: 5px 16px;
+    margin-left: 8px;
+    width: 100%;
+    max-width: 240px;
+    height: 50%;
+    -webkit-appearance: none;
+}
+
+@media only screen and (min-width: 380px)  {
+    header nav .search-container {
+        padding-left: calc(4%);
+    }
+}
+@media only screen and (min-width: 425px)  {
+    header nav .search-container {
+        padding-left: calc(8%);
+    }
+}
+@media only screen and (min-width: 450px)  {
+    header nav .search-container {
+        padding-left: calc(12%);
+    }
+}
+@media only screen and (min-width: 550px)  {
+    header nav .search-container {
+        padding-left: calc(18%);
+    }
+}
+.sidenav{
+    position: fixed;
+    top: 64px;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    min-width: 260px;
+    margin-left: -260px;
+    background-color: #fff;
+    box-shadow: 6px 0 6px rgba(0,0,0,.1);
+    transition-property: margin-left,min-width;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0.2s;
+}
+
+.sidenav-margin-left{
+    margin-left: 0px; 
+}
+
+.content{
+    position: absolute;
+    top: 64px;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    margin-left: 0px;
+    background-color: transparent;
+    transition-property: margin-left;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0.2s;
+    
+}
+
+.content-margin-left{
+    width: calc(100% - 260px);
+    margin-left: 260px;
+}
+
+
+.sidenav-container{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    color: rgba(0,0,0,.87);
+}
+
+
+.aio-nav-menu {
+    display: block;
+    margin: 0 auto;
+    max-width: 260px;
+    font-size: 1rem;
+}
+
+.aio-nav-menu:first-child {
+    margin-top: 16px;
+}
+button.vertical-menu-item {
+    border: none;
+    background-color: transparent;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0;
+    width: 100%;
+}
+.vertical-menu-item {
+    box-sizing: border-box;
+    color: #444;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow-wrap: break-word;
+    padding: 8px;
+    text-decoration: none;
+    text-align: left;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.heading-children.expanded {
+    visibility: visible;
+    opacity: 1;
+    padding-left: 0;
+    max-height: 4000px;
+    transition: visibility .5s,opacity .5s,max-height .5s;
+    transition-timing-function: ease-in-out;
+}
+
+.heading-children.collapsed {
+    overflow: hidden;
+    visibility: hidden;
+    padding-left: 0;
+    opacity: 0;
+    max-height: 1px;
+    transition: visibility 275ms,opacity 275ms,max-height .28s;
+    transition-timing-function: ease-out;
+}
+
+.level-1 {
+    font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    padding-left: 20px;
+    margin: 0;
+    transition: background-color .8s;
+    text-transform: uppercase;
+}
+
+/* The checkbox container */
+.container-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 50px;
+    padding-top: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+.container-checkbox:first-child{
+    margin-top: 10px;
+}
+  
+  /* Hide the browser's default checkbox */
+  .container-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container-checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container-checkbox input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container-checkbox input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container-checkbox .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+.game-cards {
+max-width: 100%;
+display: grid;
+grid-gap: 0.5rem;
+}
+
+.game-cards .game-card {
+background-color: dodgerblue;
+color: rgba(0,0,0,.87);
+padding: 1rem;
+height: 210px;
+background-color: #fff;
+border-radius: 4px;
+box-shadow: 0 2px 2px rgba(10,16,20,.24), 0 0 2px rgba(10,16,20,.12);
+box-sizing: border-box;
+transition: box-shadow .5s;
+max-width: 410px;
+min-width: 262px;
+margin: 8px 8px;
+padding-bottom: 10px;
+position: relative;
+}
+.game-cards .game-card .card-footer {
+    text-align: center;
+}
+
+
+
+.game-cards .game-card .game-details p{
+    margin-block-start: 0.1em;
+    margin-block-end: 0.3em;
+}
+  
+    /* @media (min-width: 600px) {
+      .game-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+  
+    @media (min-width: 900px) {
+      .game-cards { grid-template-columns: repeat(3, 1fr); }
+    } */
+  
+  /* to remove media queries of cards*/
+  
+.game-cards{
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.game-cards .game-card section{
+    font-weight: 100;
+    font-style: italic;
+    color: #000;
+    text-align: center;
+}
+
+.game-cards .game-card .game-details{
+    font-weight: 100;
+    text-align: left;
+}
+.inliine-block{
+    display: inline;
+}
+
+
+
+
+@media only screen and (min-width: 700px)  {
+    header nav .search-container {
+        padding-left: calc(34%);
+    }
+    .sidenav{
+        /*on this time sidebar should be shown by default so margin-left 0*/
+        margin-left: 0px;
+    }
+    .sidenav-margin-left{
+        /*menu should be hidden margin left in negative 260px*/
+        margin-left: -260px;
+    }
+    .content{
+        /*by default sidebar will be visible so margin left 260px for sidebar and width -260px*/
+        width: calc(100% - 260px);
+        margin-left: 260px;
+    }
+    .content-margin-left{
+        /*since sidebar will be hidden no margin on left and full width*/
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    
+}
+
+@media only screen and (min-width: 875px)  {
+    
+}
+
+@media only screen and (min-width: 1024px)  {
+    
+}
+
+@media only screen and (min-width: 1350px)  {
+    
+}
+
+@media only screen and (min-width: 1600px)  {
+    
+}
